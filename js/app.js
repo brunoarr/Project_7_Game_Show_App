@@ -8,13 +8,11 @@ let missed = 0;
 const startButton = document.getElementsByClassName('btn__reset')[0];
 let phrases = [
   "A BIRD IN THE HAND IS WORTH TWO IN THE BUSH",
+  "A BARKING DOG NEVER BITES",
+  "A GOLDEN KEY CAN OPEN ANY DOOR",
+  "BETTER LATE THAN NEVER",
+  "YOU CANNOT JUDGE A BOOK BY ITS COVER",
 ]
-/*
-"A BARKING DOG NEVER BITES",
-"A GOLDEN KEY CAN OPEN ANY DOOR",
-"BETTER LATE THAN NEVER",
-"YOU CANNOT JUDGE A BOOK BY ITS COVER",
-*/
 
 //Hide start screen --> START Game
 startButton.addEventListener("click", hideFunction);
@@ -77,10 +75,11 @@ function checkLetter(guess){
     let text = letter[i].innerText;
     if (guess == text || guess.toUpperCase() == text){
      //let show = document.getElementsByClassName('letter')[i];
-     letter[i].className = 'show';
+     letter[i].className = 'letter show';
      let show = document.getElementsByClassName('show');
        if (letter.length == show.length){
-         win.style.display = 'flex';
+         setTimeout(function(){ win.style.display = 'flex'; }, 1000);
+         setTimeout(function(){window.location.replace("index.html"); }, 3000);
        }
     } else {
      wrong = wrong + 1;
@@ -90,7 +89,8 @@ function checkLetter(guess){
        var images = document.getElementsByTagName("img");
        document.images[missed - 1].src="images/lostHeart.png";
        if (missed == '5'){
-         lose.style.display = 'flex';
+        setTimeout(function(){ lose.style.display = 'flex'; }, 1000);
+        setTimeout(function(){window.location.replace("index.html"); }, 3000);
        }
      }
     }
@@ -106,24 +106,14 @@ document.getElementById("qwerty").addEventListener("click", function(e) {
     e.target.disabled = true;
     let letterSelected = e.target.textContent;
     checkLetter(letterSelected);
-    /*if (false){
-      missed = missed + 1;
-      //change liveHeart.png for lostHeart.png
-      var images = document.getElementsByTagName("img");
-      document.images[missed - 1].src="images/lostHeart.png";
-    }*/
 	}
 });
 
-
-/*
 //Keyboard press
 document.onkeypress = function(e) {
     e = e || window.event;
     var charCode = (typeof e.which == "number") ? e.which : e.keyCode;
     if (charCode) {
-        alert("Character typed: " + String.fromCharCode(charCode));
         checkLetter(String.fromCharCode(charCode));
     }
 };
-*/
