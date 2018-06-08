@@ -98,7 +98,6 @@ button {
   padding: 20px 1px 0 1px;
   margin-right: 2px;
   color: transparent;
-  /* background: radial-gradient(#ffffff, #ffffff, #abbaab); */
   background: var(--color-neutral-light);
   border-radius: 5px;
   margin-bottom: 4px;
